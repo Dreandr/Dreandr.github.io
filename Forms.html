@@ -5,18 +5,26 @@
 </head>
 <body>
 	Choose: Banana or Cherry?
- <form action="https://zivuch.github.io/formdata.html" method="get" onsubmit="validateform()">
+ <form action="https://zivuch.github.io/formdata.html" method="GET" onsubmit="validateform(this)">
  	<input type="text" name="fruitname" value="" required pattern="[Bb]anana|[Cc]herry" minlength=2>
  	<input type="submit" name="" value="Submit">
  </form>
  <script type="text/javascript">
- 	const validateform = () => {
- 		let fn = document.getElementByName("fruitname")
- 		if (fn.value.trim() === ``){
- 			return false;
- 		}
- 		return true;
+ 	let fn = document.getElementsByName("fruitname")[0]
+ 	let form = document.forms[0]
+ 	const validateform = (myForm) => {
+ 		frname = myForm.fruitname
+ 		frnamejson = JSON.stringify(frname)
+ 		fn.fruitname.value = frnamejson
+ 		return false
  	}
+
+ 	// = () => {
+ 	// 	if (fn.value.trim() === ``){
+ 	// 		return false;
+ 	// 	}
+ 	// 	fn.value = JSON.stringify({user: "Name", favFruit: fn.value});
+ 	// }
 
  </script>
 </body>

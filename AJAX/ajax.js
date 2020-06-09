@@ -1,13 +1,15 @@
 let xhr = new XMLHttpRequest();
 
-xhr.open('GET', 'zivuch.github.io/ajax/data.html');
+xhr.open('GET', 'https://zivuch.github.io/ajax/data.json');
 xhr.send();
 
 xhr.onload = function() {
   if (xhr.status != 200) { // analyze HTTP status of the response
     alert(`Error ${xhr.status}: ${xhr.statusText}`); // e.g. 404: Not Found
   } else { // show the result
-    alert(`Done, got ${xhr.response}`); // responseText is the server
+    data = xhr.response;
+    console.log(JSON.parse(data))
+    document.body.appendChild(data) // responseText is the server
   }
 };
 
